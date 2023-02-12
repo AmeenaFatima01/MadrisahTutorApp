@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     databaseHelper mydb;
@@ -31,8 +32,10 @@ public class MainActivity extends AppCompatActivity {
                 boolean isInserted= mydb.Insert(date.getText().toString(),name.getText().toString(),ayat.getText().toString(),sabaqi.getText().toString(),manzil.getText().toString(),salah.getText().toString());
                 if(isInserted==true)
                 {
-                    
+                    Toast.makeText(MainActivity.this, "Inserted in database", Toast.LENGTH_LONG).show();
                 }
+                else
+                    Toast.makeText(MainActivity.this, "Failed to insert in database", Toast.LENGTH_LONG).show();
             }
         });
     }
