@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 public class databaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "student.db";
     public static final String TABLE_NAME = "std";
@@ -37,7 +35,7 @@ public class databaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean Insert(String Date,String Name,String Ayat,String Sabaqi,String Manzil,String Salah)
+    public boolean Insert(String Date, String Name, String Ayat, String Sabaqi, String Manzil, String Salah)
     {
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues values=new ContentValues();

@@ -28,7 +28,11 @@ public class MainActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                boolean isInserted= mydb.Insert(date.getText().toString(),name.getText().toString(),ayat.getText().toString(),sabaqi.getText().toString(),manzil.getText().toString(),salah.getText().toString());
+                if(isInserted==true)
+                {
+                    
+                }
             }
         });
     }
