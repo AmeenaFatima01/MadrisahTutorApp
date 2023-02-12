@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
+    databaseHelper mydb;
     Button submit,view;
     EditText date,name,ayat,sabaqi,manzil,salah;
     @Override
@@ -21,6 +22,6 @@ public class MainActivity extends AppCompatActivity {
         sabaqi=findViewById(R.id.sabaqifld);
         manzil=findViewById(R.id.manzilfld);
         salah=findViewById(R.id.salahfld);
-
+        mydb=new databaseHelper(this);
     }
 }
