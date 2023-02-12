@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -23,5 +24,12 @@ public class MainActivity extends AppCompatActivity {
         manzil=findViewById(R.id.manzilfld);
         salah=findViewById(R.id.salahfld);
         mydb=new databaseHelper(this);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 }
