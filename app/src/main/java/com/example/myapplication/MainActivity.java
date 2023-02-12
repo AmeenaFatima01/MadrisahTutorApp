@@ -1,8 +1,11 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     databaseHelper mydb;
     Button submit,view;
     EditText date,name,ayat,sabaqi,manzil,salah;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +42,40 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Failed to insert in database", Toast.LENGTH_LONG).show();
             }
         });
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Cursor res=mydb.getData();
+                if(res==null)
+                {
+                    showMessage("Error","Nothing Found");
+                    return;
+                }
+                else
+                {
+                    StringBuffer bf=new StringBuffer();
+                    while(res.moveToNext())
+                    {
+                        bf.append("Date :"+res.getString(0)+" ");
+                        bf.append("Name :"+res.getString(1)+" ");
+                        bf.append("Ayat :"+res.getString(2)+" ");
+                        bf.append("Sabaqi :"+res.getString(3)+" ");
+                        bf.append("Manzil :"+res.getString(4)+" ");
+                        bf.append("Salah :"+res.getString(5)+"\n");
+                    }
+                    showMessage("Data",bf.toString());
+                }
             }
         });
+
+    }
+
+    private void showMessage(String title, String message) {
+        AlertDialog.Builder bd=new AlertDialog.Builder(this);
+        bd.setCancelable(true);
+        bd.setTitle(title);
+        bd.setMessage(message);
+        bd.show();
     }
 }
