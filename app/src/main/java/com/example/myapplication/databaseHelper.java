@@ -23,12 +23,13 @@ public class databaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+    public void onCreate(SQLiteDatabase db)
+    {
+        db.execSQL("CREATE TABLE "+TABLE_NAME+"(Date TEXT,Name TEXT,Ayat TEXT,Sabaqi TEXT,Manzil TEXT,Salah TEXT)");
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 
     }
 }
