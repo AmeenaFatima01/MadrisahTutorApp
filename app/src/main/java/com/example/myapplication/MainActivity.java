@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                         bf.append("Ayat :"+res.getString(2)+" ");
                         bf.append("Sabaqi :"+res.getString(3)+" ");
                         bf.append("Manzil :"+res.getString(4)+" ");
-                        bf.append("Salah :"+res.getString(5)+"\n");
+                        bf.append("Salah :"+res.getString(5)+"\n\n");
                     }
                     showMessage("Data",bf.toString());
                 }
