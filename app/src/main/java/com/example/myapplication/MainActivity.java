@@ -3,7 +3,9 @@ package com.example.myapplication;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
@@ -13,7 +15,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     databaseHelper mydb;
-    Button submit,view;
+    Button submit,view,commit;
     EditText date,name,ayat,sabaqi,manzil,salah;
 
     @Override
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         sabaqi=findViewById(R.id.sabaqifld);
         manzil=findViewById(R.id.manzilfld);
         salah=findViewById(R.id.salahfld);
+        commit=findViewById(R.id.commitbtn);
         mydb=new databaseHelper(this);
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +45,12 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Failed to insert in database", Toast.LENGTH_LONG).show();
             }
         });
-
+        commit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goLink("https://github.com/AmeenaFatima01/MadrisahTutorApp/commits/main");
+            }
+        });
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,4 +86,10 @@ public class MainActivity extends AppCompatActivity {
         bd.setMessage(message);
         bd.show();
     }
+    private void goLink(String s)
+    {
+        Uri uri= Uri.parse(s);
+        startActivity(new Intent(Intent.ACTION_VIEW,uri));
+    }
+
 }
